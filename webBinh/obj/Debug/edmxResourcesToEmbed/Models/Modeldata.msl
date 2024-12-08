@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="webNangCaoQLDA2ModelStoreContainer" CdmEntityContainer="webNangCaoQLDA2Entities">
+    <EntitySetMapping Name="columns">
+      <EntityTypeMapping TypeName="webNangCaoQLDA2Model.column">
+        <MappingFragment StoreEntitySet="columns">
+          <ScalarProperty Name="id_column" ColumnName="id_column" />
+          <ScalarProperty Name="id_project" ColumnName="id_project" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="createdAt" ColumnName="createdAt" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Comments">
+      <EntityTypeMapping TypeName="webNangCaoQLDA2Model.Comment">
+        <MappingFragment StoreEntitySet="Comment">
+          <ScalarProperty Name="id_comment" ColumnName="id_comment" />
+          <ScalarProperty Name="id_user" ColumnName="id_user" />
+          <ScalarProperty Name="content" ColumnName="content" />
+          <ScalarProperty Name="createdAt" ColumnName="createdAt" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="nguoiDungs">
+      <EntityTypeMapping TypeName="webNangCaoQLDA2Model.nguoiDung">
+        <MappingFragment StoreEntitySet="nguoiDung">
+          <ScalarProperty Name="id_user" ColumnName="id_user" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="pass" ColumnName="pass" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="avatar" ColumnName="avatar" />
+          <ScalarProperty Name="id_role" ColumnName="id_role" />
+          <ScalarProperty Name="isActive" ColumnName="isActive" />
+          <ScalarProperty Name="fullname" ColumnName="fullname" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Projects">
+      <EntityTypeMapping TypeName="webNangCaoQLDA2Model.Project">
+        <MappingFragment StoreEntitySet="Project">
+          <ScalarProperty Name="id_project" ColumnName="id_project" />
+          <ScalarProperty Name="mota" ColumnName="mota" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="ownerIds" ColumnName="ownerIds" />
+          <ScalarProperty Name="createdAt" ColumnName="createdAt" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="webNangCaoQLDA2Model.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tasks">
+      <EntityTypeMapping TypeName="webNangCaoQLDA2Model.Task">
+        <MappingFragment StoreEntitySet="Task">
+          <ScalarProperty Name="id_task" ColumnName="id_task" />
+          <ScalarProperty Name="id_column" ColumnName="id_column" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="Ketqua" ColumnName="Ketqua" />
+          <ScalarProperty Name="mota" ColumnName="mota" />
+          <ScalarProperty Name="createdAt" ColumnName="createdAt" />
+          <ScalarProperty Name="updateAt" ColumnName="updateAt" />
+          <ScalarProperty Name="deadline" ColumnName="deadline" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="User_Task">
+      <EntityTypeMapping TypeName="webNangCaoQLDA2Model.User_Task">
+        <MappingFragment StoreEntitySet="User_Task">
+          <ScalarProperty Name="id_user_task" ColumnName="id_user_task" />
+          <ScalarProperty Name="id_user" ColumnName="id_user" />
+          <ScalarProperty Name="id_task" ColumnName="id_task" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vaiTroes">
+      <EntityTypeMapping TypeName="webNangCaoQLDA2Model.vaiTro">
+        <MappingFragment StoreEntitySet="vaiTro">
+          <ScalarProperty Name="id_role" ColumnName="id_role" />
+          <ScalarProperty Name="role_name" ColumnName="role_name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

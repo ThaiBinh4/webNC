@@ -1,0 +1,56 @@
+﻿@{
+    ViewBag.Title = "GetTaskByProject";
+}
+<head>
+    <link rel="stylesheet" type="text/css" href="~/css/Bang.css" />
+</head>
+<div class="content">
+    <h2>Danh sách công việc</h2>
+
+    @if (ViewBag.taskMember != null && ViewBag.taskMember.Count > 0)
+    {
+        <table>
+            <thead>
+                <tr>
+                    <th>Tên Task</th>
+                    <th>Thành viên</th>
+                    <th>Hạn chót</th>
+                    <th>Trạng thái</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var task in ViewBag.taskMember)
+                {
+                    <tr>
+                        @*<td>@task.taskName</td>*@ <!-- Hiển thị tên công việc -->
+                        <td>
+                            <!-- Tạo liên kết với idTask và ck -->
+                            <a href="@Url.Action("TaskDetail", "Task", new { idTask = task.idTask, ck ="g" })">
+                                @task.taskName
+                            </a>
+                        </td>
+                        <td>
+                            @if (task.members != null && task.members.Count > 0)
+                            {
+                                foreach (var member in task.members)
+                                {
+                                    <span>@member</span><br /> <!-- Hiển thị từng thành viên -->
+                                }
+                            }
+                            else
+                            {
+                                <span>Chưa có thành viên</span> <!-- Nếu không có thành viên -->
+                            }
+                        </td>
+                        <td>@task.deadline</td> <!-- Hiển thị hạn chót -->
+                        <td>@task.completionStatus</td> <!-- Hiển thị trạng thái -->
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <p>Không có công việc nào.</p> <!-- Thông báo khi không có công việc -->
+    }
+</div>

@@ -1,0 +1,282 @@
+﻿@model webBinh.Models.Task
+@{
+    ViewBag.Title = "AddTask";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Task</title>
+    <link href="~/JS/CreateTask.js" rel="stylesheet" />
+</head>
+<style>
+    /* Header styles */
+    .header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background-color: #ffff;
+        color: rgb(0, 0, 0);
+        padding: 10px 20px;
+        border-bottom: 1px solid #dcdcdc;
+        font-size: 14px;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 2000; /* Tăng z-index để đảm bảo header nổi trên các phần tử khác */
+    }
+
+    .logo {
+        font-size: 20px;
+        font-weight: bold;
+        display: flex;
+        align-items: center;
+    }
+
+    .navbar {
+        display: flex;
+    }
+
+        .navbar a {
+            color: black !important;
+            text-decoration: none;
+            font-size: 14px;
+            display: inline-flex;
+            align-items: center;
+            padding: 8px 8px;
+            border-radius: 4px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+            .navbar a:hover {
+                background-color: #f0f0f0;
+                color: #000000;
+                text-decoration: none;
+            }
+
+    .header-right {
+        display: flex;
+        align-items: center;
+    }
+
+    .search-input {
+        padding: 5px;
+        border: 1px solid #dcdcdc;
+        border-radius: 4px;
+        margin-right: 10px;
+    }
+
+    .add-button {
+        background-color: #0056a3;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        padding: 8px 12px;
+        cursor: pointer;
+        font-size: 14px;
+        margin-right: 10px;
+    }
+
+        .add-button:hover {
+            background-color: #004a8d;
+        }
+
+        .add-button a {
+            color: white; /* Đặt màu chữ trắng */
+            text-decoration: none; /* Bỏ gạch chân */
+        }
+
+            .add-button a:hover {
+                color: white; /* Đảm bảo màu chữ vẫn là trắng khi hover */
+                text-decoration: none; /* Bỏ gạch chân khi hover */
+            }
+
+    .icons {
+        display: flex;
+        align-items: center;
+    }
+
+    .icon {
+        margin: 0 5px;
+        font-size: 18px;
+        cursor: pointer;
+    }
+
+        .icon.user-icon {
+            background-color: orange;
+            border-radius: 50%;
+            padding: 4px;
+            color: white;
+            font-size: 16px;
+        }
+
+    /* Đặt font chữ và căn giữa */
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        background-color: #f4f5f7;
+    }
+
+    /* Container Wrapper */
+.container-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh; /* Chiều cao tối thiểu để không đè lên header */
+    padding-top: 60px; /* Khoảng cách để tránh header */
+    background: linear-gradient(135deg, #e8f0ff, #f5f7fa);
+}
+
+/* Container */
+.container {
+    background: white;
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    width: 100%;
+    animation: fadeIn 0.8s ease-in-out;
+}
+
+/* Heading */
+.container h1, .container h3 {
+    text-align: center;
+    color: #333;
+    font-family: 'Roboto', sans-serif;
+}
+
+/* Form Inputs */
+.container .form-horizontal .form-group label {
+    font-weight: bold;
+    margin-bottom: 8px;
+    display: block;
+}
+
+.container input[type="text"],
+.container input[type="submit"] {
+    width: 100%;
+    padding: 12px 15px;
+    margin-bottom: 15px;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+    font-size: 14px;
+    box-sizing: border-box;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.container input[type="text"]:focus,
+.container input[type="submit"]:hover {
+    border-color: #6a11cb;
+    box-shadow: 0 0 5px rgba(106, 17, 203, 0.5);
+    outline: none;
+}
+
+    .container input[type="submit"] {
+        background: #4CAF50; /* Màu xanh lá vừa mắt */
+        color: white;
+        font-weight: bold;
+        border: none;
+        border-radius: 6px;
+        padding: 10px 15px;
+        cursor: pointer;
+        font-size: 16px;
+        transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+        .container input[type="submit"]:hover {
+            background: #45a049; /* Màu xanh đậm hơn khi hover */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Hiệu ứng nhẹ khi rê chuột */
+        }
+
+/* Animation */
+keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+      .icons img {
+      width: 50px; /* Chiều rộng cố định */
+      height: 50px; /* Chiều cao cố định, giống width */
+      border-radius: 50%; /* Tạo hình tròn */
+      object-fit: cover; /* Cắt ảnh vừa khít */
+      border: 2px solid #ffffff; /* (Tuỳ chọn) Thêm viền */
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* (Tuỳ chọn) Hiệu ứng đổ bóng */
+  }
+
+</style>
+<body>
+    <header class="header">
+        <div class="logo">Trello</div>
+        <nav class="navbar">
+            <a href="#">Các Không gian làm việc ▼</a>
+            <a href="#">Gần đây ▼</a>
+            <a href="#">Đã đánh dấu sao ▼</a>
+            <a href="#">Mẫu ▼</a>
+       
+        </nav>
+        <div class="header-right">
+            <input type="text" placeholder="Tìm kiếm" class="search-input">
+            @{
+                webBinh.Models.Project k = null;
+            }
+            <button class="add-button">
+                @Html.ActionLink("Tạo mới", "createProject", new { project = k })
+            </button>
+            <div class="icons">
+                <span class="icon search-icon">🔍</span>
+                <span class="icon bell-icon">🔔</span>
+                <img src="@Url.Content("~/IMG/" + ViewBag.avatar)" alt="Ảnh đại diện" />
+            </div>
+        </div>
+    </header>
+
+    <div class="container-wrapper">
+        <div class="container">
+            <h1>Thêm nhiệm vụ </h1>
+            <h3>Nhập vào đây</h3>
+            @ViewBag.idpr
+            @using (Html.BeginForm("CreateTask", "Task", FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-horizontal">
+                    <hr />
+                    @ViewBag.ErrorMessage
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.title, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.title, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.title, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    @{
+                        int x = ViewBag.idcl;
+
+                        var loginCookie = Request.Cookies["LoginCookie"];
+                    }
+                    @Html.Hidden("idcl", x)
+                    @Html.Hidden("iduser", loginCookie.Value)
+
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Thêm" class="btn btn-default" />
+                        </div>
+                    </div>
+                </div>
+            }
+
+        </div>
+    </div>
+</body>
+</html>
+
+

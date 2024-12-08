@@ -1,0 +1,76 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: url('background.jpg') no-repeat center center/cover;
+}
+
+.container {
+    display: flex;
+    width: 70%;
+    max-width: 900px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    background: white;
+}
+
+.left-section {
+    flex: 1;
+    background-image: url('/IMG/martin-masson-8FBr3z73Ymw-unsplash.jpg'); /* Đường dẫn tới ảnh */
+    background-size: cover; /* Tự động điều chỉnh kích thước để phủ toàn bộ */
+    background-position: center; /* Căn giữa ảnh */
+    background-repeat: no-repeat; /* Không lặp lại ảnh */
+    color: rgb(0, 0, 0);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.right-section {
+    flex: 1;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: #fff;
+}
+
+form input, form button {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+form button {
+    background-color: #00bcd4;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+    border: none;
+}
+
+form button:hover {
+    background-color: #0097a7;
+}
+
+form label {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+}
+
+form a {
+    color: #00bcd4;
+    text-decoration: none;
+}
+
+form a:hover {
+    text-decoration: underline;
+}

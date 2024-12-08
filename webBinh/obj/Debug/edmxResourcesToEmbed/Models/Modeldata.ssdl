@@ -1,0 +1,214 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="webNangCaoQLDA2Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="columns">
+    <Key>
+      <PropertyRef Name="id_column" />
+    </Key>
+    <Property Name="id_column" Type="int" Nullable="false" />
+    <Property Name="id_project" Type="int" />
+    <Property Name="title" Type="nvarchar" MaxLength="200" />
+    <Property Name="createdAt" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Comment">
+    <Key>
+      <PropertyRef Name="id_comment" />
+    </Key>
+    <Property Name="id_comment" Type="int" Nullable="false" />
+    <Property Name="id_user" Type="char" MaxLength="10" />
+    <Property Name="content" Type="nvarchar(max)" />
+    <Property Name="createdAt" Type="datetime" />
+  </EntityType>
+  <EntityType Name="nguoiDung">
+    <Key>
+      <PropertyRef Name="id_user" />
+    </Key>
+    <Property Name="id_user" Type="char" MaxLength="10" Nullable="false" />
+    <Property Name="email" Type="varchar" MaxLength="50" />
+    <Property Name="pass" Type="varchar" MaxLength="100" />
+    <Property Name="username" Type="varchar" MaxLength="15" />
+    <Property Name="avatar" Type="varchar" MaxLength="300" />
+    <Property Name="id_role" Type="int" />
+    <Property Name="isActive" Type="bit" />
+    <Property Name="fullname" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="Project">
+    <Key>
+      <PropertyRef Name="id_project" />
+    </Key>
+    <Property Name="id_project" Type="int" Nullable="false" />
+    <Property Name="mota" Type="nvarchar(max)" />
+    <Property Name="title" Type="nvarchar" MaxLength="50" />
+    <Property Name="ownerIds" Type="char" MaxLength="10" />
+    <Property Name="createdAt" Type="datetime" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="Task">
+    <Key>
+      <PropertyRef Name="id_task" />
+    </Key>
+    <Property Name="id_task" Type="int" Nullable="false" />
+    <Property Name="id_column" Type="int" />
+    <Property Name="title" Type="nvarchar" MaxLength="50" />
+    <Property Name="Ketqua" Type="nvarchar(max)" />
+    <Property Name="mota" Type="nvarchar(max)" />
+    <Property Name="createdAt" Type="datetime" />
+    <Property Name="updateAt" Type="datetime" />
+    <Property Name="deadline" Type="datetime" />
+  </EntityType>
+  <EntityType Name="User_Task">
+    <Key>
+      <PropertyRef Name="id_user_task" />
+    </Key>
+    <Property Name="id_user_task" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_user" Type="char" MaxLength="10" />
+    <Property Name="id_task" Type="int" />
+  </EntityType>
+  <EntityType Name="vaiTro">
+    <Key>
+      <PropertyRef Name="id_role" />
+    </Key>
+    <Property Name="id_role" Type="int" Nullable="false" />
+    <Property Name="role_name" Type="nvarchar" MaxLength="10" />
+  </EntityType>
+  <Association Name="FK__columns__id_proj__3F466844">
+    <End Role="Project" Type="Self.Project" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="columns" Type="Self.columns" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Project">
+        <PropertyRef Name="id_project" />
+      </Principal>
+      <Dependent Role="columns">
+        <PropertyRef Name="id_project" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Comment__id_user__44FF419A">
+    <End Role="nguoiDung" Type="Self.nguoiDung" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Comment" Type="Self.Comment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="nguoiDung">
+        <PropertyRef Name="id_user" />
+      </Principal>
+      <Dependent Role="Comment">
+        <PropertyRef Name="id_user" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__nguoiDung__id_ro__398D8EEE">
+    <End Role="vaiTro" Type="Self.vaiTro" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="nguoiDung" Type="Self.nguoiDung" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="vaiTro">
+        <PropertyRef Name="id_role" />
+      </Principal>
+      <Dependent Role="nguoiDung">
+        <PropertyRef Name="id_role" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Project__ownerId__3C69FB99">
+    <End Role="nguoiDung" Type="Self.nguoiDung" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Project" Type="Self.Project" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="nguoiDung">
+        <PropertyRef Name="id_user" />
+      </Principal>
+      <Dependent Role="Project">
+        <PropertyRef Name="ownerIds" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Task__id_column__4222D4EF">
+    <End Role="columns" Type="Self.columns" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Task" Type="Self.Task" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="columns">
+        <PropertyRef Name="id_column" />
+      </Principal>
+      <Dependent Role="Task">
+        <PropertyRef Name="id_column" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__User_Task__id_ta__48CFD27E">
+    <End Role="Task" Type="Self.Task" Multiplicity="0..1" />
+    <End Role="User_Task" Type="Self.User_Task" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Task">
+        <PropertyRef Name="id_task" />
+      </Principal>
+      <Dependent Role="User_Task">
+        <PropertyRef Name="id_task" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__User_Task__id_us__47DBAE45">
+    <End Role="nguoiDung" Type="Self.nguoiDung" Multiplicity="0..1" />
+    <End Role="User_Task" Type="Self.User_Task" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="nguoiDung">
+        <PropertyRef Name="id_user" />
+      </Principal>
+      <Dependent Role="User_Task">
+        <PropertyRef Name="id_user" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="webNangCaoQLDA2ModelStoreContainer">
+    <EntitySet Name="columns" EntityType="Self.columns" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Comment" EntityType="Self.Comment" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="nguoiDung" EntityType="Self.nguoiDung" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Project" EntityType="Self.Project" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Task" EntityType="Self.Task" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="User_Task" EntityType="Self.User_Task" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="vaiTro" EntityType="Self.vaiTro" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__columns__id_proj__3F466844" Association="Self.FK__columns__id_proj__3F466844">
+      <End Role="Project" EntitySet="Project" />
+      <End Role="columns" EntitySet="columns" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Comment__id_user__44FF419A" Association="Self.FK__Comment__id_user__44FF419A">
+      <End Role="nguoiDung" EntitySet="nguoiDung" />
+      <End Role="Comment" EntitySet="Comment" />
+    </AssociationSet>
+    <AssociationSet Name="FK__nguoiDung__id_ro__398D8EEE" Association="Self.FK__nguoiDung__id_ro__398D8EEE">
+      <End Role="vaiTro" EntitySet="vaiTro" />
+      <End Role="nguoiDung" EntitySet="nguoiDung" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Project__ownerId__3C69FB99" Association="Self.FK__Project__ownerId__3C69FB99">
+      <End Role="nguoiDung" EntitySet="nguoiDung" />
+      <End Role="Project" EntitySet="Project" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Task__id_column__4222D4EF" Association="Self.FK__Task__id_column__4222D4EF">
+      <End Role="columns" EntitySet="columns" />
+      <End Role="Task" EntitySet="Task" />
+    </AssociationSet>
+    <AssociationSet Name="FK__User_Task__id_ta__48CFD27E" Association="Self.FK__User_Task__id_ta__48CFD27E">
+      <End Role="Task" EntitySet="Task" />
+      <End Role="User_Task" EntitySet="User_Task" />
+    </AssociationSet>
+    <AssociationSet Name="FK__User_Task__id_us__47DBAE45" Association="Self.FK__User_Task__id_us__47DBAE45">
+      <End Role="nguoiDung" EntitySet="nguoiDung" />
+      <End Role="User_Task" EntitySet="User_Task" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

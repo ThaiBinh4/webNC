@@ -1,0 +1,193 @@
+/* Header styles */
+.header {
+    display: flex;
+    align-items: center; /* Đảm bảo tất cả phần tử trong header căn giữa theo chiều dọc */
+    background-color: #ffff;
+    color: rgb(0, 0, 0);
+    padding: 10px 20px;
+    border-bottom: 1px solid #dcdcdc;
+    font-size: 14px;
+    padding: 20px;
+    background-color: #ffff;
+}
+
+.logo {
+    font-size: 20px;
+    font-weight: bold;
+    display: flex; /* Đảm bảo logo không bị lệch với nội dung bên cạnh */
+    align-items: center; /* Logo căn giữa chiều dọc */
+}
+
+.navbar {
+    display: flex; /* Sử dụng flex để các liên kết ngang hàng */
+    /* margin-left: -350px; */
+}
+
+.navbar a {
+    color: black !important; /* Buộc áp dụng màu đen */
+    text-decoration: none;
+    font-size: 14px;
+    display: inline-flex; /* Giữ các liên kết inline và hỗ trợ căn chỉnh */
+    align-items: center;
+    padding: 8px 8px; /* Thêm padding để tăng kích thước vùng nhấp */
+    border-radius: 4px; /* Làm mềm các góc */
+    transition: background-color 0.3s ease, color 0.3s ease; /* Hiệu ứng chuyển mượt */
+}
+
+.navbar a:hover {
+    background-color: #f0f0f0; /* Nền chuyển sang màu xám nhạt khi hover */
+    color: #000000; /* Giữ màu chữ đậm */
+    text-decoration: none; /* Loại bỏ gạch chân */
+}
+
+.header-right {
+    display: flex;
+    align-items: center; /* Đảm bảo các phần tử căn giữa */
+}
+
+.search-input {
+    padding: 5px;
+    border: 1px solid #dcdcdc;
+    border-radius: 4px;
+    margin-right: 10px;
+}
+
+.add-button {
+    background-color: #0056a3;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 8px 12px;
+    cursor: pointer;
+    font-size: 14px;
+    margin-right: 10px; /* Thêm khoảng cách giữa nút và các icon */
+}
+
+.add-button:hover {
+    background-color: #004a8d;
+}
+
+.icons {
+    display: flex;
+    align-items: center;
+}
+
+.icon {
+    margin: 0 5px;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.icon.user-icon {
+    background-color: orange;
+    border-radius: 50%;
+    padding: 4px;
+    color: white;
+    font-size: 16px;
+}
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f5f7;
+    background-image: url('/IMG/martin-masson-8FBr3z73Ymw-unsplash.jpg'); /* Đường dẫn tới ảnh */
+    background-size: cover; /* Tự động điều chỉnh kích thước để phủ toàn bộ */
+    background-position: center; /* Căn giữa ảnh */
+    background-repeat: no-repeat; /* Không lặp lại ảnh */
+  }
+  
+  .container {
+    display: flex;
+    width: 100%;
+    flex-direction: row; /* Dàn ngang các phần tử con */
+    height: 100vh
+}
+
+  /* Sidebar Styles */
+  .sidebar {
+    width: 300px;
+    background-color: #2e3a45;
+    color: white;
+    padding: 20px;
+    flex-shrink: 0; /* Ngăn sidebar co lại */
+}
+  
+  .sidebar h2 {
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .sidebar ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .sidebar ul li a {
+    text-decoration: none;
+    color: white;
+    display: block;
+    padding: 10px 0;
+  }
+  
+  .boards p {
+    font-weight: bold;
+    margin-top: 20px;
+  }
+  
+  .main-content {
+    flex-grow: 1;
+    position: relative;
+    overflow: hidden;
+    padding: 16px; /* Thêm khoảng cách giữa nội dung chính và cạnh */
+  }
+
+ 
+  .header h1 {
+    margin: 0;
+  }
+
+  
+  /* Background Styles */
+  .background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(120deg, #174757, #00aabb, #7f8c8d);
+    background-size: cover;
+    z-index: -1;
+    mask-image: url('https://via.placeholder.com/1000x600'); /* Thay bằng hình cuộn */
+    mask-size: cover;
+    -webkit-mask-image: url('https://via.placeholder.com/1000x600'); /* Hình động */
+  }
+
+  .add-list-button {
+    margin-top: 10px; /* Khoảng cách giữa nút và tiêu đề */
+    display: inline-flex; /* Đảm bảo nội dung trong nút được căn giữa */
+    align-items: center;
+    justify-content: center;
+    padding: 8px 16px; /* Thêm không gian xung quanh */
+    border-radius: 8px; /* Bo góc */
+    background: rgb(255, 255, 255); /* Nền mờ */
+    color: #000000; /* Màu chữ xanh đậm */
+    font-size: 14px; /* Cỡ chữ */
+    font-weight: bold; /* Chữ đậm */
+    cursor: pointer; /* Con trỏ chuột dạng nút */
+    transition: #ffffff 0.3s ease; /* Hiệu ứng hover */
+  }
+  
+  .add-list-button:hover {
+    background: rgba(255, 255, 255, 0.5); /* Thay đổi độ mờ khi hover */
+  }
+  .add-board-icon {
+    font-size: 24px;
+    color: #4CAF50; /* Màu xanh lá cây cho dấu cộng */
+    cursor: pointer;
+    margin-left: 20px;
+    transition: color 0.3s ease;
+    
+}
+.add-board-icon:hover {
+  color: #45a049; /* Màu xanh lá cây đậm khi hover */
+}

@@ -1,0 +1,66 @@
+﻿@using webBinh.Models;
+@using Newtonsoft.Json;
+@using System;
+@using System.Collections.Generic;
+@using System.Data;
+@using System.Data.Entity;
+@using System.Linq;
+@using System.Net;
+@using System.Threading.Tasks;
+@using System.Web;
+@using System.Web.DynamicData;
+@using System.Web.Mvc;
+@using System.Threading.Tasks;
+@using Newtonsoft.Json;
+@using System.Collections.Generic;
+@*@{
+    webBinh.Models.webNangCaoQLDAEntities db = new webBinh.Models.webNangCaoQLDAEntities();
+
+    List<webBinh.Models.Project> project = new List<webBinh.Models.Project>();
+
+
+    using (var httpClient = new  System.Net.Http.HttpClient())
+    {
+        var response = httpClient.GetAsync("http://localhost:5284/api/APIsp/GetAllsanpham").Result; // Thay URL bằng URL API của bạn
+
+        if (response.IsSuccessStatusCode)
+        {
+            var responseData = response.Content.ReadAsStringAsync().Result;
+
+            project = JsonConvert.DeserializeObject<List<webBinh.Models.Project>>(responseData);
+        }
+        else
+        {
+            ViewBag.ErrorMessage = "Không thể kết nối với API.";
+        }
+    }
+}*@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark bkheader">
+        @*<div class="container">
+
+        </div>*@
+    </nav>
+
+    @*<div class="container body-content">*@
+        @RenderBody()
+
+    @*</div>*@
+
+
+    @*@Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")*@
+    @RenderSection("scripts", required: false)
+</body>
+</html>

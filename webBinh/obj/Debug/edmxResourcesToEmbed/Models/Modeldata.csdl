@@ -1,0 +1,228 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="webNangCaoQLDA2Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="column">
+    <Key>
+      <PropertyRef Name="id_column" />
+    </Key>
+    <Property Name="id_column" Type="Int32" Nullable="false" />
+    <Property Name="id_project" Type="Int32" />
+    <Property Name="title" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="createdAt" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Project" Relationship="Self.FK__columns__id_proj__3F466844" FromRole="columns" ToRole="Project" />
+    <NavigationProperty Name="Tasks" Relationship="Self.FK__Task__id_column__4222D4EF" FromRole="columns" ToRole="Task" />
+  </EntityType>
+  <EntityType Name="Comment">
+    <Key>
+      <PropertyRef Name="id_comment" />
+    </Key>
+    <Property Name="id_comment" Type="Int32" Nullable="false" />
+    <Property Name="id_user" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+    <Property Name="content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="createdAt" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="nguoiDung" Relationship="Self.FK__Comment__id_user__44FF419A" FromRole="Comment" ToRole="nguoiDung" />
+  </EntityType>
+  <EntityType Name="nguoiDung">
+    <Key>
+      <PropertyRef Name="id_user" />
+    </Key>
+    <Property Name="id_user" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="pass" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="username" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="avatar" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Name="id_role" Type="Int32" />
+    <Property Name="isActive" Type="Boolean" />
+    <Property Name="fullname" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Comments" Relationship="Self.FK__Comment__id_user__44FF419A" FromRole="nguoiDung" ToRole="Comment" />
+    <NavigationProperty Name="vaiTro" Relationship="Self.FK__nguoiDung__id_ro__398D8EEE" FromRole="nguoiDung" ToRole="vaiTro" />
+    <NavigationProperty Name="Projects" Relationship="Self.FK__Project__ownerId__3C69FB99" FromRole="nguoiDung" ToRole="Project" />
+    <NavigationProperty Name="User_Task" Relationship="Self.FK__User_Task__id_us__47DBAE45" FromRole="nguoiDung" ToRole="User_Task" />
+  </EntityType>
+  <EntityType Name="Project">
+    <Key>
+      <PropertyRef Name="id_project" />
+    </Key>
+    <Property Name="id_project" Type="Int32" Nullable="false" />
+    <Property Name="mota" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ownerIds" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+    <Property Name="createdAt" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="columns" Relationship="Self.FK__columns__id_proj__3F466844" FromRole="Project" ToRole="columns" />
+    <NavigationProperty Name="nguoiDung" Relationship="Self.FK__Project__ownerId__3C69FB99" FromRole="Project" ToRole="nguoiDung" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Task">
+    <Key>
+      <PropertyRef Name="id_task" />
+    </Key>
+    <Property Name="id_task" Type="Int32" Nullable="false" />
+    <Property Name="id_column" Type="Int32" />
+    <Property Name="title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Ketqua" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="mota" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="createdAt" Type="DateTime" Precision="3" />
+    <Property Name="updateAt" Type="DateTime" Precision="3" />
+    <Property Name="deadline" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="column" Relationship="Self.FK__Task__id_column__4222D4EF" FromRole="Task" ToRole="columns" />
+    <NavigationProperty Name="User_Task" Relationship="Self.FK__User_Task__id_ta__48CFD27E" FromRole="Task" ToRole="User_Task" />
+  </EntityType>
+  <EntityType Name="User_Task">
+    <Key>
+      <PropertyRef Name="id_user_task" />
+    </Key>
+    <Property Name="id_user_task" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id_user" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+    <Property Name="id_task" Type="Int32" />
+    <NavigationProperty Name="nguoiDung" Relationship="Self.FK__User_Task__id_us__47DBAE45" FromRole="User_Task" ToRole="nguoiDung" />
+    <NavigationProperty Name="Task" Relationship="Self.FK__User_Task__id_ta__48CFD27E" FromRole="User_Task" ToRole="Task" />
+  </EntityType>
+  <EntityType Name="vaiTro">
+    <Key>
+      <PropertyRef Name="id_role" />
+    </Key>
+    <Property Name="id_role" Type="Int32" Nullable="false" />
+    <Property Name="role_name" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="nguoiDungs" Relationship="Self.FK__nguoiDung__id_ro__398D8EEE" FromRole="vaiTro" ToRole="nguoiDung" />
+  </EntityType>
+  <Association Name="FK__columns__id_proj__3F466844">
+    <End Role="Project" Type="Self.Project" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="columns" Type="Self.column" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Project">
+        <PropertyRef Name="id_project" />
+      </Principal>
+      <Dependent Role="columns">
+        <PropertyRef Name="id_project" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Task__id_column__4222D4EF">
+    <End Role="columns" Type="Self.column" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Task" Type="Self.Task" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="columns">
+        <PropertyRef Name="id_column" />
+      </Principal>
+      <Dependent Role="Task">
+        <PropertyRef Name="id_column" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Comment__id_user__44FF419A">
+    <End Role="nguoiDung" Type="Self.nguoiDung" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Comment" Type="Self.Comment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="nguoiDung">
+        <PropertyRef Name="id_user" />
+      </Principal>
+      <Dependent Role="Comment">
+        <PropertyRef Name="id_user" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__nguoiDung__id_ro__398D8EEE">
+    <End Role="vaiTro" Type="Self.vaiTro" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="nguoiDung" Type="Self.nguoiDung" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="vaiTro">
+        <PropertyRef Name="id_role" />
+      </Principal>
+      <Dependent Role="nguoiDung">
+        <PropertyRef Name="id_role" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Project__ownerId__3C69FB99">
+    <End Role="nguoiDung" Type="Self.nguoiDung" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Project" Type="Self.Project" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="nguoiDung">
+        <PropertyRef Name="id_user" />
+      </Principal>
+      <Dependent Role="Project">
+        <PropertyRef Name="ownerIds" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__User_Task__id_us__47DBAE45">
+    <End Role="nguoiDung" Type="Self.nguoiDung" Multiplicity="0..1" />
+    <End Role="User_Task" Type="Self.User_Task" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="nguoiDung">
+        <PropertyRef Name="id_user" />
+      </Principal>
+      <Dependent Role="User_Task">
+        <PropertyRef Name="id_user" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__User_Task__id_ta__48CFD27E">
+    <End Role="Task" Type="Self.Task" Multiplicity="0..1" />
+    <End Role="User_Task" Type="Self.User_Task" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Task">
+        <PropertyRef Name="id_task" />
+      </Principal>
+      <Dependent Role="User_Task">
+        <PropertyRef Name="id_task" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="webNangCaoQLDA2Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="columns" EntityType="Self.column" />
+    <EntitySet Name="Comments" EntityType="Self.Comment" />
+    <EntitySet Name="nguoiDungs" EntityType="Self.nguoiDung" />
+    <EntitySet Name="Projects" EntityType="Self.Project" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <EntitySet Name="Tasks" EntityType="Self.Task" />
+    <EntitySet Name="User_Task" EntityType="Self.User_Task" />
+    <EntitySet Name="vaiTroes" EntityType="Self.vaiTro" />
+    <AssociationSet Name="FK__columns__id_proj__3F466844" Association="Self.FK__columns__id_proj__3F466844">
+      <End Role="Project" EntitySet="Projects" />
+      <End Role="columns" EntitySet="columns" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Task__id_column__4222D4EF" Association="Self.FK__Task__id_column__4222D4EF">
+      <End Role="columns" EntitySet="columns" />
+      <End Role="Task" EntitySet="Tasks" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Comment__id_user__44FF419A" Association="Self.FK__Comment__id_user__44FF419A">
+      <End Role="nguoiDung" EntitySet="nguoiDungs" />
+      <End Role="Comment" EntitySet="Comments" />
+    </AssociationSet>
+    <AssociationSet Name="FK__nguoiDung__id_ro__398D8EEE" Association="Self.FK__nguoiDung__id_ro__398D8EEE">
+      <End Role="vaiTro" EntitySet="vaiTroes" />
+      <End Role="nguoiDung" EntitySet="nguoiDungs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Project__ownerId__3C69FB99" Association="Self.FK__Project__ownerId__3C69FB99">
+      <End Role="nguoiDung" EntitySet="nguoiDungs" />
+      <End Role="Project" EntitySet="Projects" />
+    </AssociationSet>
+    <AssociationSet Name="FK__User_Task__id_us__47DBAE45" Association="Self.FK__User_Task__id_us__47DBAE45">
+      <End Role="nguoiDung" EntitySet="nguoiDungs" />
+      <End Role="User_Task" EntitySet="User_Task" />
+    </AssociationSet>
+    <AssociationSet Name="FK__User_Task__id_ta__48CFD27E" Association="Self.FK__User_Task__id_ta__48CFD27E">
+      <End Role="Task" EntitySet="Tasks" />
+      <End Role="User_Task" EntitySet="User_Task" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,540 @@
+﻿@model IEnumerable<webBinh.Models.column>
+@{
+    ViewBag.Title = "column";
+}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    <link href="~/JS/column.js" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        /* Header styles */
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: #ffff;
+            color: rgb(0, 0, 0);
+            padding: 10px 20px;
+            border-bottom: 1px solid #dcdcdc;
+            font-size: 14px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 2000; /* Tăng z-index để đảm bảo header nổi trên các phần tử khác */
+        }
+
+        .logo {
+            font-size: 20px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar {
+            display: flex;
+        }
+
+            .navbar a {
+                color: black !important;
+                text-decoration: none;
+                font-size: 14px;
+                display: inline-flex;
+                align-items: center;
+                padding: 8px 8px;
+                border-radius: 4px;
+                transition: background-color 0.3s ease, color 0.3s ease;
+            }
+
+                .navbar a:hover {
+                    background-color: #f0f0f0;
+                    color: #000000;
+                    text-decoration: none;
+                }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+        }
+
+        .search-input {
+            padding: 5px;
+            border: 1px solid #dcdcdc;
+            border-radius: 4px;
+            margin-right: 10px;
+        }
+
+        .add-button {
+            background-color: #0056a3;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 8px 12px;
+            cursor: pointer;
+            font-size: 14px;
+            margin-right: 10px;
+        }
+
+            .add-button:hover {
+                background-color: #004a8d;
+            }
+
+            .add-button a {
+                color: white; /* Đặt màu chữ trắng */
+                text-decoration: none; /* Bỏ gạch chân */
+            }
+
+                .add-button a:hover {
+                    color: white; /* Đảm bảo màu chữ vẫn là trắng khi hover */
+                    text-decoration: none; /* Bỏ gạch chân khi hover */
+                }
+
+        .icons {
+            display: flex;
+            align-items: center;
+        }
+
+        .icon {
+            margin: 0 5px;
+            font-size: 18px;
+            cursor: pointer;
+        }
+
+            .icon.user-icon {
+                background-color: orange;
+                border-radius: 50%;
+                padding: 4px;
+                color: white;
+                font-size: 16px;
+            }
+
+        /* Background styles */
+        body {
+            background-image: url('/IMG/martin-masson-8FBr3z73Ymw-unsplash.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Menu styles */
+        /* Updated Menu Styles */
+        .menu {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: flex-start;
+            width: 280px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: #2e3a45;
+            color: white;
+            padding: 80px 20px 20px;
+            height: 100vh;
+            overflow-y: auto;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            border-right: 1px solid #dcdcdc;
+            transition: all 0.3s ease-in-out;
+            font-family: Arial, sans-serif;
+        }
+
+            .menu:hover {
+                background-color: #35495e;
+            }
+
+
+            .menu ul {
+                list-style-type: none;
+                padding: 0;
+                margin: 0;
+                width: 100%;
+            }
+
+            .menu li {
+                display: flex;
+                align-items: center;
+                justify-content: flex-start;
+                padding: 10px 15px;
+                margin: 10px 0;
+                background-color: rgba(255, 255, 255, 0.1);
+                border-radius: 8px;
+                transition: all 0.3s ease-in-out;
+            }
+
+                .menu li a {
+                    text-decoration: none;
+                    color: white;
+                    font-size: 14px;
+                    font-weight: 500;
+                    transition: color 0.3s ease-in-out;
+                }
+
+                .menu li:hover {
+                    background-color: rgba(255, 255, 255, 0.2);
+                    transform: scale(1.05);
+                }
+
+                .menu li a:hover {
+                    color: #00aabb; /* Màu xanh nhấn khi hover */
+                }
+
+            .menu .title_box {
+                font-size: 20px;
+                font-weight: bold;
+                margin-bottom: 20px;
+                color: #00aabb;
+                text-transform: uppercase;
+                letter-spacing: 1px;
+            }
+
+
+        .add {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 40px;
+            margin: 20px 0 0;
+            background-color: #0056a3;
+            color: white;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+            .add:hover {
+                background-color: #004a8d;
+            }
+
+
+        /* Main content */
+        .main-content {
+            margin-left: 25%; /* Để không bị menu che */
+            padding: 100px 16px 16px; /* Điều chỉnh để không bị header che */
+            position: relative;
+            z-index: 1;
+        }
+
+        .header h1 {
+            margin: 0;
+        }
+
+        /* Background Styles */
+        .background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(120deg, #174757, #00aabb, #7f8c8d);
+            background-size: cover;
+            z-index: -1;
+        }
+
+        .title_box {
+            font-size: 20px; /* Tăng cỡ chữ */
+            font-weight: bold; /* In đậm chữ */
+            margin-bottom: 20px; /* Khoảng cách dưới */
+            padding-bottom: 10px; /* Tạo thêm khoảng cách nội bộ nếu cần */
+            margin-top: 20px; /* Khoảng cách trên để đẩy xuống */
+            padding-top: 10px; /* Tạo khoảng cách bên trong phía trên */
+        }
+
+        .content .title_box {
+            font-size: 20px; /* Tăng cỡ chữ */
+            font-weight: bold; /* In đậm chữ */
+            margin-bottom: 20px; /* Khoảng cách dưới */
+            padding-bottom: 10px; /* Tạo thêm khoảng cách nội bộ nếu cần */
+            margin-top: 20px; /* Khoảng cách trên để đẩy xuống */
+            padding-top: 10px; /* Tạo khoảng cách bên trong phía trên */
+        }
+
+        /* Styling container content */
+        .content {
+            margin-left: 280px; /* Khoảng cách so với menu */
+            margin-top: 80px; /* Khoảng cách với header */
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+            .content .column {
+                clear: both; /* Đảm bảo các cột nằm phía dưới title_box */
+                margin-top: 20px; /* Tạo thêm khoảng cách phía trên */
+            }
+
+        /* Styling container content */
+        .content {
+            margin-left: 280px; /* Khoảng cách so với menu */
+            margin-top: 80px; /* Khoảng cách với header */
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+            /* Container cho các column */
+            .content .column-container {
+                display: flex; /* Sử dụng Flexbox để xếp hàng ngang */
+                flex-wrap: wrap; /* Cho phép các cột xuống dòng nếu không đủ không gian */
+                gap: 15px; /* Khoảng cách giữa các cột */
+                margin-top: 20px; /* Khoảng cách phía trên so với title_box */
+                justify-content: flex-start; /* Căn từ trái sang phải */
+            }
+
+        /* Styling cho các cột (column) */
+        .column {
+            width: calc((100% - 45px) / 3); /* Tính toán để có tối đa 3 cột và khoảng cách đều */
+            padding: 20px;
+            border: 1px solid #ddd;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, background-color 0.3s ease;
+            box-sizing: border-box; /* Bao gồm padding và border trong kích thước cột */
+        }
+
+            .column:hover {
+                background-color: #f0f0f0; /* Đổi màu nền khi hover */
+                transform: translateY(-5px); /* Hiệu ứng nổi lên */
+            }
+
+            .column a {
+                color: blue; /* Màu chữ đỏ cho liên kết */
+                text-decoration: none; /* Loại bỏ gạch dưới */
+            }
+
+        /* Styling cho item-column */
+        .item-column {
+            background-color: #eaf8e8;
+            border: 1px solid #c3e6cb;
+            border-radius: 8px;
+            padding: 10px;
+            margin: 10px 0;
+            font-size: 16px;
+            font-weight: bold;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+            .item-column:hover {
+                background-color: #d4f5d0;
+                transform: scale(1.02);
+            }
+
+        /* Styling cho nút Add */
+        .add a {
+            display: inline-block;
+            padding: 8px 16px;
+            background-color: #007bff;
+            color: white;
+            border-radius: 5px;
+            text-align: center;
+            text-decoration: none;
+            font-size: 14px;
+            transition: background-color 0.3s ease;
+        }
+
+            .add a:hover {
+                background-color: #0056b3;
+            }
+
+        .add {
+            width: 50px;
+            height: 30px;
+            border-radius: 5px;
+            background-color: blue;
+            text-align: center;
+            color: white;
+            margin: 0 auto;
+        }
+
+        .icons img {
+            width: 50px; /* Chiều rộng cố định */
+            height: 50px; /* Chiều cao cố định, giống width */
+            border-radius: 50%; /* Tạo hình tròn */
+            object-fit: cover; /* Cắt ảnh vừa khít */
+            border: 2px solid #ffffff; /* (Tuỳ chọn) Thêm viền */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* (Tuỳ chọn) Hiệu ứng đổ bóng */
+        }
+
+        /* Styling tiêu đề trong cột */
+        .tieudecot {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+        }
+
+            /* Container cho nút Edit và Xóa */
+            .tieudecot .btn-container {
+                display: flex;
+                flex-direction: column; /* Xếp dọc các nút */
+                align-items: flex-end; /* Căn phải */
+                gap: 5px; /* Khoảng cách giữa các nút */
+            }
+
+            /* Styling chung cho nút */
+            .tieudecot button {
+                display: inline-flex; /* Để icon và text căn giữa */
+                align-items: center;
+                justify-content: center;
+                padding: 5px 10px;
+                font-size: 14px;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                transition: background-color 0.3s ease, transform 0.2s ease;
+            }
+
+                .tieudecot button:hover {
+                    background-color: #ff4a3a;
+                }
+
+            /* Nút Edit */
+            .tieudecot .edit-btn {
+                background-color: #0056b3;
+                transform: scale(1.05);
+            }
+
+                .tieudecot .edit-btn:hover {
+                    background-color: #0056b3;
+                    transform: scale(1.05);
+                }
+
+            /* Nút Xóa */
+            .tieudecot .delete-btn {
+                background-color: #dc3545; /* Màu đỏ */
+                color: white;
+            }
+
+                .tieudecot .delete-btn:hover {
+                    background-color: #a71d2a;
+                    transform: scale(1.05);
+                }
+
+            /* Icon trong nút */
+            .tieudecot button i {
+                margin-right: 5px; /* Khoảng cách giữa icon và text */
+                font-size: 16px;
+            }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="logo">Trello</div>
+        <nav class="navbar">
+            <a href="#">Các Không gian làm việc ▼</a>
+            <a href="#">Gần đây ▼</a>
+            <a href="#">Đã đánh dấu sao ▼</a>
+            <a href="#">Mẫu ▼</a>
+            <a href="@Url.Action("GetTaskByProject", new { idProject = ViewBag.id })">
+                <div>
+                    <span>🔥</span> <!-- Biểu tượng hoặc nội dung khác -->
+                    <span>Danh sách task</span>
+                </div>
+            </a>
+            <a href="@Url.Action("GetProjectProgress", new { idProject = ViewBag.id })">
+                <div>
+                    <span>🔥</span> <!-- Biểu tượng hoặc nội dung khác -->
+                    <span>Biểu đồ thống kê</span>
+                </div>
+            </a>
+        </nav>
+        <div class="header-right">
+            <input type="text" placeholder="Tìm kiếm" class="search-input">
+            @{
+                webBinh.Models.Project x = null;
+            }
+            <button class="add-button">
+
+                @Html.ActionLink("Tạo mới", "createProject", new { project = x })
+            </button>
+            <div class="icons">
+                <span class="icon search-icon">🔍</span>
+                <span class="icon bell-icon">🔔</span>
+                <img src="@Url.Content("~/IMG/" + ViewBag.avatar)" alt="Ảnh đại diện" "/>
+            </div>
+        </div>
+    </header>
+
+    <!-- Container Left (Menu) -->
+    <div class="menu">
+        <div class="title_box">Project của tôi</div>
+        <ul class="left_menu">
+
+            @foreach (var item in ViewBag.project)
+            {
+                var loginCookie = Request.Cookies["LoginCookie"];
+                <li>
+                    <a href="column?id_project= @item.id_project&sdt=@loginCookie.Value"> @item.title </a>
+
+                </li>
+            }
+
+        </ul>
+
+    </div>
+    <div class="content">
+        <div class="title_box">Các phần của @ViewBag.ten</div>
+
+        <div class="column-container">
+            @foreach (var item in Model)
+            {
+                <div class="column">
+                  <div class="tieudecot">
+                      <!-- Tiêu đề cột -->
+                      <span>@item.title</span>
+
+                      <!-- Container chứa các nút -->
+                      <div class="btn-container">
+                          <!-- Nút Edit -->
+                          <form action="@Url.Action("EditColumn", "columns")" method="get" style="margin: 0;">
+                              <input type="hidden" name="id" value="@item.id_column.ToString()" />
+                              <button type="submit" class="edit-btn">
+                                  <i class="fas fa-edit"></i> Edit
+                              </button>
+                          </form>
+
+                          <!-- Nút Xóa -->
+                          <form action="@Url.Action("Delete", "columns")" method="get">
+                              <input type="hidden" name="id" value="@item.id_column" />
+                              <button type="submit">Xóa</button>
+                          </form>
+                      </div>
+                  </div>
+                    <hr />
+                    @foreach (var i in ViewBag.task)
+                    {
+                        if (i.id_column == item.id_column)
+                        {
+                            <div class="item-column">
+                                <a href="@Url.Action("TaskDetail", "Task", new { idTask = i.id_task })">
+                                    @i.title 
+                                </a>
+                            </div>
+                        }
+                    }
+                    <div class="add">
+                        <a href="@Url.Action("CreateTask", "Task", new { idcl = @item.id_column })">Add</a>
+                    </div>
+                </div>
+            }
+
+            <!-- Cột "Add" để thêm mới -->
+            <div class="column">
+                <a href="@Url.Action("CreateColumn", "columns", new { idpr = ViewBag.id })">Add</a>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,256 @@
+/* Header */
+header {
+    background: #ffffff;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.logo {
+    font-size: 24px;
+    color: #0052cc;
+    font-weight: bold;
+}
+
+.navbar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+.navbar ul li {
+    margin: 0 15px;
+}
+
+.navbar ul li a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    font-size: 16px;
+}
+
+.button-primary {
+    background: #0052cc;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.button-primary:hover {
+    background-color: #003f99;
+}
+
+/* Global Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+  
+/* Hero Section */
+.hero {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 50px;
+    background: linear-gradient(90deg, #9d50bb, #6e48aa);
+    color: white;
+}
+
+.hero-content {
+    max-width: 500px;
+}
+
+.hero-content h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.hero-content p {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.hero-content form {
+    display: flex;
+    gap: 10px;
+}
+
+.hero-content input {
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    flex: 1;
+}
+
+.hero-image img {
+    max-width: 400px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Form Popup */
+.form-popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    z-index: 10;
+    width: 100%;
+    opacity: 0;
+    pointer-events: none;
+    max-width: 720px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    transform: translate(-50%, -70%);
+    transition: transform 0.3s ease, opacity 0.2s;
+}
+
+.show-popup .form-popup {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translate(-50%, -50%);
+}
+
+.form-popup .close-btn {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    color: #878484;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.blur-bg-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 5;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    pointer-events: none;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    transition: opacity 0.2s ease;
+}
+
+.show-popup .blur-bg-overlay {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* File Upload */
+.file-upload-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 20px;
+    padding: 10px;
+    border: 1px solid #00BCD4;
+    border-radius: 5px;
+}
+
+.custom-file-upload {
+    background-color: #00BCD4;
+    color: #fff;
+    padding: 8px 12px;
+    border-radius: 3px;
+    cursor: pointer;
+    font-weight: 500;
+    text-align: center;
+}
+
+.custom-file-upload:hover {
+    background-color: #0097a7;
+}
+
+.custom-file-upload input[type="file"] {
+    display: none;
+}
+
+#fileName {
+    margin-left: 10px;
+    color: #333;
+}
+
+#avatarPreview {
+    display: block;
+    margin-left: 10px;
+    width: 80px;
+    height: auto;
+    border-radius: 5px;
+}
+
+/* Forms */
+.form-box {
+    padding: 20px;
+}
+
+.form-box h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #333;
+}
+
+.input-field {
+    position: relative;
+    margin-bottom: 15px;
+}
+
+.input-field input {
+    width: 100%;
+    padding: 12px 20px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.input-field input:focus {
+    border-color: #00BCD4;
+    outline: none;
+}
+
+.input-field label {
+    position: absolute;
+    left: 20px;
+    top: 10px;
+    font-size: 14px;
+    color: #777;
+}
+
+.input-field input:focus + label,
+.input-field input:not(:placeholder-shown) + label {
+    top: -10px;
+    font-size: 12px;
+    color: #00BCD4;
+}
+
+/* Links */
+.forgot-pass-link,
+.bottom-link a,
+.option {
+    color: #0052cc;
+    text-decoration: none;
+}
+
+.forgot-pass-link:hover,
+.bottom-link a:hover,
+.option:hover {
+    text-decoration: underline;
+}

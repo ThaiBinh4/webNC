@@ -1,0 +1,132 @@
+﻿@model webBinh.Models.nguoiDung
+@{
+    ViewBag.Title = "Register";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup</title>
+    @*<link rel="stylesheet" href="~/CSS/Register.css">*@
+    <link href="~/Content/Site.css?v=@DateTime.Now.Ticks" rel="stylesheet" />
+</head>
+<style>
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background: url('background.jpg') no-repeat center center/cover;
+    }
+
+    .container {
+        display: flex;
+        max-width: 900px;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        background: white;
+    }
+
+    .left-section {
+        flex: 1;
+        background-image: url('/IMG/martin-masson-8FBr3z73Ymw-unsplash.jpg'); /* Đường dẫn tới ảnh */
+        background-size: cover; /* Tự động điều chỉnh kích thước để phủ toàn bộ */
+        background-position: center; /* Căn giữa ảnh */
+        background-repeat: no-repeat; /* Không lặp lại ảnh */
+        color: rgb(0, 0, 0);
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .right-section {
+        flex: 1;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        background: #fff;
+    }
+
+    form input {
+        width: 100%; /* Đặt chiều dài bằng 100% */
+        padding: 10px;
+        margin: 10px 0;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-sizing: border-box; /* Đảm bảo padding không ảnh hưởng đến kích thước */
+    }
+
+    form button {
+        width: 100%;
+        padding: 10px;
+        margin: 10px 0;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    form button {
+        width: 100%; /* Đặt chiều dài bằng 100% */
+        padding: 10px;
+        margin: 10px 0;
+        border-radius: 5px;
+        background-color: #00bcd4;
+        color: white;
+        cursor: pointer;
+        font-size: 16px;
+        border: none;
+    }
+
+        form button:hover {
+            background-color: #0097a7;
+        }
+
+    form label {
+        display: flex;
+        align-items: center;
+        font-size: 14px;
+    }
+
+    form a {
+        color: #00bcd4;
+        text-decoration: none;
+    }
+
+        form a:hover {
+            text-decoration: underline;
+        }
+
+</style>
+<body>
+    <div class="container">
+        <div class="left-section">
+            <h2>Create Account</h2>
+            <p>To become a part of our community, please sign up using your personal information.</p>
+        </div>
+        <div class="right-section">
+            <h3>SIGNUP</h3>
+            <form action="@Url.Action("Register", "nguoiDungs")" method="post" enctype="multipart/form-data">
+                <input type="text" name="IdUser" placeholder="Enter your phone number" required> <!-- Số điện thoại -->
+                <input type="email" name="email" placeholder="Enter your email" required>
+                <input type="file" name="avatar" required>
+                <input type="password" name="password" placeholder="Create password" required>
+                <input type="text" name="username" placeholder="Enter your username" required>
+                <!-- <label for="avatar">Upload avatar:</label>
+    <input type="file" id="avatar" name="avatar" accept="image/*" required> -->
+                <input type="text" name="fullname" placeholder="Enter your full name" required>
+                <button type="submit">Sign Up</button>
+            </form>
+            @if (ViewBag.ErrorMessage != null)
+            {
+                <p style="color: red;">@ViewBag.ErrorMessage</p>
+            }
+            <p>Already have an account? <a href="@Url.Action("Index", "nguoiDungs")">Login</a></p>
+        </div>
+    </div>
+</body>
+</html>

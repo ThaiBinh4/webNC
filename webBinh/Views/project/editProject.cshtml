@@ -1,0 +1,116 @@
+﻿﻿@model webBinh.Models.Project
+@using System;
+@using System.Collections.Generic;
+@using System.Linq;
+@{
+    ViewBag.Title = "editProject";
+}
+
+<style>
+    .form {
+        width: 500px;
+        border: 2px solid;
+        padding: 20px 50px;
+        margin: 0 auto;
+    }
+
+        .form > h2 {
+            text-align: center;
+        }
+
+    .nhap {
+    }
+
+    .submit {
+        border: 2px solid;
+        border-radius: 10px;
+        background-color: chartreuse;
+        text-align: center;
+        width: 150px;
+        float: right;
+        display: inline;
+    }
+
+        .submit:hover {
+            background-color: coral;
+            box-shadow: 0px 0px 10px 5px red;
+        }
+</style>
+@*@using (Html.BeginForm("editProject", "project", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+
+    <div class="form">
+        <h2>Sửa thông tin dự án</h2>
+        <hr />
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        @Html.HiddenFor(model => model.id_project) // Giữ lại id của dự án
+        @Html.HiddenFor(model => model.ownerIds)   // Giữ lại ownerId
+        @Html.HiddenFor(model => model.createdAt)   // Giữ lại createdAt0*@
+
+<div class="nhap">
+    <h4>Tiêu đề dự án</h4>
+
+
+    <form action="@Url.Action("editProject", "project")" method="post">
+
+
+
+        <div class="form-group" style="display: none;">
+            @Html.LabelFor(model => model.id_project, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.id_project, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.id_project, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.title, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.title, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.title, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.mota, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.mota, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.mota, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group" style="display: none;">
+            @Html.LabelFor(model => model.ownerIds, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ownerIds, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ownerIds, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group" style="display: none;">
+            @Html.LabelFor(model => model.createdAt, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.createdAt, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.createdAt, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="button-container">
+            <button type="submit">Lưu thay đổi</button>
+        </div>
+    </form>
+
+
+    <div>
+        <div>
+            <form method="post" action="@Url.Action("DeleteProject", "Project")">
+                <input type="hidden" name="id_project" value="@Model.id_project" />
+                <button type="submit" class="cancel">Xóa</button>
+            </form>
+        </div>
+
+    </div>
+
+</div>

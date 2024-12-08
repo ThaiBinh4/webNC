@@ -1,0 +1,288 @@
+﻿@model webBinh.Models.Task
+@{
+    ViewBag.Title = "TaskDetail";
+}
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thẻ công việc</title>
+    <link rel="stylesheet" href="~/CSS/TaskDetail.css">
+    @*<script src="/JS/TaskDetail.js" defer></script>*@
+    @*<script>
+        const taskId = @Model.id_task;
+    </script>*@
+</head>
+<style>
+    /* CSS */
+
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f5f7;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start; /* Đặt lại cho thân trang có thể cuộn */
+        height: 100vh;
+        margin: 0;
+        background-image: url('/IMG/martin-masson-8FBr3z73Ymw-unsplash.jpg');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        overflow-y: auto; /* Cho phép cuộn dọc */
+    }
+
+    .container {
+        width: 90%;
+        max-width: 400px;
+        height:auto;
+        background: #ffff;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px ;
+        margin-top:15px;
+        padding:15px;
+    }
+
+    .header {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        margin-bottom: 20px;
+    }
+
+        .header h2 {
+            margin: 0;
+            font-size: 24px;
+        }
+
+        .header span {
+            margin-top: 5px;
+            color: #555;
+        }
+
+    /* Mô tả */
+    .description label {
+        font-weight: bold;
+        font-size: 16px;
+    }
+
+    .description-input {
+        width: 98%;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        outline: none;
+        resize: none;
+        min-height: 70px;
+    }
+
+    #description-input::placeholder {
+        color: #aaa;
+        font-style: italic;
+    }
+
+    /* Ngày hết hạn */
+    .due-date-section label {
+        font-weight: bold;
+        font-size: 16px;
+    }
+
+    #due-date {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        margin-top: 5px;
+    }
+
+    .due-date-display {
+        background-color: #fffae6;
+        color: #333;
+        padding: 10px;
+        margin-top: 10px;
+        border-radius: 5px;
+        font-weight: bold;
+    }
+
+    /* Kết quả */
+    .activity label {
+        font-weight: bold;
+        font-size: 16px;
+    }
+
+    .activity-box {
+        margin-top: 10px;
+        background-color: #f4f5f7;
+        padding: 10px;
+        border-radius: 5px;
+    }
+
+        .activity-box input {
+            width: 95%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+    /* Nút bên cạnh */
+    .side-panel {
+        margin-top: 20px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+    }
+
+        .side-panel button {
+            padding: 10px;
+            background-color: #ebecf0;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+            .side-panel button:hover {
+                background-color: #dfe1e6;
+            }
+
+    /* Nút Xóa */
+    .delete-btn {
+        margin-top: 10px;
+        width: 100%;
+        background-color: #ff4d4d;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        padding: 10px;
+        text-align: center;
+    }
+
+        .delete-btn:hover {
+            background-color: #e33d3d;
+        }
+
+</style>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h2 id="task-title">@Model.title</h2>
+            <div>
+                <span>Trong danh sách <strong>danh sách gì cũng được</strong></span>
+            </div>
+        </div>
+
+        <!-- Mô tả công việc -->
+        <div class="description">
+            <label>Mô tả</label>
+            <form method="post" action="@Url.Action("TaskDetail", "Task", new { idTask = ViewBag.idTask })">
+                @*@Html.Hidden("idTask", ViewBag.idTask)*@
+
+                @Html.EditorFor(model => model.mota, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.mota, "", new { @class = "text-danger" })
+                <button type="submit" class="btn add-btn">Thêm mô tả</button>
+            </form>
+        </div>
+
+        <!-- Ngày hết hạn -->
+        <div class="due-date-section">
+            <label for="due-date">Ngày hết hạn:</label>
+            <form method="post" action="@Url.Action("TaskDetail", "Task", new { idTask = ViewBag.idTask })">
+                @Html.TextBoxFor(model => model.deadline, new { type = "date", @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.deadline, "", new { @class = "text-danger" })
+                <button type="submit">Cập nhật ngày hết hạn</button>
+            </form>
+        </div>
+
+        <!-- Hiển thị ngày hết hạn -->
+        <div class="due-date-display">
+            <p>Ngày đã chọn: <span id="display-date">@Model.deadline</span></p>
+        </div>
+
+        <!-- Kết quả công việc -->
+        <div class="activity">
+            <label>Kết quả</label>
+            <form method="post" action="@Url.Action("TaskDetail", "Task", new { idTask = ViewBag.idTask })">
+                <div class="activity-box">
+                    @Html.EditorFor(model => model.Ketqua, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Ketqua, "", new { @class = "text-danger" })
+                    @*<input id="result-input" type="text" placeholder="Vất link kết quả vào đây..." value="@Model.Ketqua" />*@
+                    <button type="submit" id="add-result" class="btn add-btn">Thêm</button>
+                    <div id="result-log" class="activity-log"></div>
+                </div>
+            </form>
+        </div>
+
+        <!-- Side Panel -->
+        <div class="side-panel">
+
+            @using (Html.BeginForm("UpdateTrangThai", "TaskController", FormMethod.Post, new { id = "task-form" }))
+            {
+                @Html.AntiForgeryToken()
+
+                <!-- Giả lập PUT bằng hidden field -->
+                <input type="hidden" name="_method" value="PUT" />
+
+                <!-- Checkbox -->
+        <div class="form-group">
+            <input type="checkbox" id="status-checkbox" name="ck" value="true"
+                   @(string.IsNullOrEmpty(Model.Ketqua) || !Model.Ketqua.Contains("Hoàn thành") ? "" : "checked") />
+
+            <label for="status-checkbox">Đánh dấu là hoàn thành</label>
+        </div>
+
+                <!-- Hidden input for task ID -->
+                <input type="hidden" name="idTask" value="@ViewBag.idTask" />
+
+                <!-- Submit Button -->
+                <button type="submit" class="btn btn-primary">Cập nhật trạng thái</button>
+            }
+
+            <script>
+                document.getElementById('task-form').onsubmit = function (event) {
+                    event.preventDefault(); // Ngừng gửi form mặc định
+
+                    var ck = document.getElementById('status-checkbox').checked;
+                    var idTask = document.querySelector('input[name="idTask"]').value;
+
+                    var url = `https://localhost:7217/UpdateTrangThai?id_task=${idTask}&ck=${ck}`;
+
+                    fetch(url, {
+                        method: 'PUT',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'RequestVerificationToken': document.querySelector('input[name="__RequestVerificationToken"]').value // CSRF token
+                        }
+                    })
+                        .then(response => {
+                            if (!response.ok) {
+                                return response.json().then(errorData => {
+                                    // Nếu API trả về lỗi, ném lỗi cho phần catch phía dưới
+                                    throw new Error(errorData.error || 'Có lỗi xảy ra từ API');
+                                });
+                            }
+                            return response.json(); // Chỉ xử lý dữ liệu khi phản hồi thành công
+                        })
+                        .then(data => {
+                            // Kiểm tra dữ liệu trả về từ API
+                            alert('Cập nhật thành công!');
+
+                        })
+                        .catch(error => {
+                            // Bắt lỗi trong quá trình gọi API
+                            console.error('Có lỗi xảy ra:', error);
+                            alert('Có lỗi xảy ra: ' + error.message);  // Thông báo lỗi cho người dùng
+                        });
+                };
+
+
+            </script>
+        </div>
+        <!-- Nút Xóa -->
+        <form method="post" action="@Url.Action("DeleteTask", "Task", new { idTask = Model.id_task })">
+            <button type="submit" id="delete-button" class="btn delete-btn">Xóa</button>
+        </form>
+    </div>
+</body>
+</html>

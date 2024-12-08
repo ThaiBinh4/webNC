@@ -1,0 +1,121 @@
+﻿@model IEnumerable<webBinh.Models.nguoiDung>
+
+@{
+    ViewBag.Title = "Index";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    @*<link rel="stylesheet" href="~/CSS/Style.css">*@
+   <link href="~/Content/Site.css" rel="stylesheet" />
+</head>
+<style>
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      
+    }
+
+    .container {
+        display: flex;    
+        max-width: 700px;
+        border-radius: 10px;       
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        background:white;
+    }
+
+    .body-content {
+        margin-top: -15px;
+        padding-left: -15px;
+        padding-right: -15px;
+    }
+
+    .left-section {
+        flex: 1;
+        background-image: url('/IMG/martin-masson-8FBr3z73Ymw-unsplash.jpg'); /* Đường dẫn tới ảnh */
+        background-size: cover; /* Tự động điều chỉnh kích thước để phủ toàn bộ */
+        background-position: center; /* Căn giữa ảnh */
+        background-repeat: no-repeat; /* Không lặp lại ảnh */
+        color: rgb(0, 0, 0);
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .right-section {
+        flex: 1;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        background: #fff;
+        box-shadow: none; /* Đảm bảo không có bóng đổ thừa */
+    }
+
+    form input {
+        width: 100%;
+        padding: 10px;
+        margin: 10px 0;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    form button {
+        width: 100%;
+        background-color: #00bcd4;
+        color: white;
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+    }
+
+        form button:hover {
+            background-color: #0097a7;
+        }
+
+    form a {
+        color: #00bcd4;
+        text-decoration: none;
+        display: block;
+        margin-bottom: 10px;
+    }
+
+        form a:hover {
+            text-decoration: underline;
+        }
+
+
+</style>
+<body>
+    <div class="container">
+        <div class="left-section">
+            <h2>Welcome Back</h2>
+            <p>Please log in using your personal information to stay connected with us.</p>
+        </div>
+        <div class="right-section">
+            <h3>LOGIN</h3>
+            @using (Html.BeginForm("Login", "nguoiDungs", FormMethod.Post))
+            {
+                <input type="text" name="IdUser" placeholder="Số điện thoại" required>
+                <input type="password" name="Pass" placeholder="Password" required>
+                <a href="#">Forgot password?</a>
+                <button type="submit">Log In</button>
+            }
+            @if (ViewBag.ErrorMessage != null)
+            {
+                <p style="color: red;">@ViewBag.ErrorMessage</p>
+            }
+            <p>Don't have an account? <a href="@Url.Action("Register", "nguoiDungs")">Signup</a></p>
+        </div>
+    </div>
+</body>
+</html>
