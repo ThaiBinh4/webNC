@@ -1,0 +1,6 @@
+@WebManagement_HostAddress = http://localhost:5283
+
+GET {{WebManagement_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

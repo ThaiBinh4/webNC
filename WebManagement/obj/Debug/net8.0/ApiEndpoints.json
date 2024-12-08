@@ -1,0 +1,829 @@
+[
+  {
+    "ContainingType": "API.Controllers.ProjectController",
+    "Method": "createColumn",
+    "RelativePath": "createColumn",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id_column",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "IdProject",
+        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "Title",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "CreatedAt",
+        "Type": "System.Nullable\u00601[[System.DateTime, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "IdProjectNavigation.id_project",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "IdProjectNavigation.Mota",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "IdProjectNavigation.Title",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "IdProjectNavigation.OwnerIds",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "IdProjectNavigation.CreatedAt",
+        "Type": "System.Nullable\u00601[[System.DateTime, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "IdProjectNavigation.Columns",
+        "Type": "System.Collections.Generic.ICollection\u00601[[APIwebmoi.Models.Column, WebManagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "IdProjectNavigation.OwnerIdsNavigation.IdUser",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "IdProjectNavigation.OwnerIdsNavigation.Email",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "IdProjectNavigation.OwnerIdsNavigation.Pass",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "IdProjectNavigation.OwnerIdsNavigation.Username",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "IdProjectNavigation.OwnerIdsNavigation.Avatar",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "IdProjectNavigation.OwnerIdsNavigation.IdRole",
+        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "IdProjectNavigation.OwnerIdsNavigation.IsActive",
+        "Type": "System.Nullable\u00601[[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "IdProjectNavigation.OwnerIdsNavigation.Fullname",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "IdProjectNavigation.OwnerIdsNavigation.Comments",
+        "Type": "System.Collections.Generic.ICollection\u00601[[APIwebmoi.Models.Comment, WebManagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "IdProjectNavigation.OwnerIdsNavigation.IdRoleNavigation.IdRole",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "IdProjectNavigation.OwnerIdsNavigation.IdRoleNavigation.RoleName",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "IdProjectNavigation.OwnerIdsNavigation.IdRoleNavigation.NguoiDungs",
+        "Type": "System.Collections.Generic.ICollection\u00601[[APIwebmoi.Models.NguoiDung, WebManagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "IdProjectNavigation.OwnerIdsNavigation.Projects",
+        "Type": "System.Collections.Generic.ICollection\u00601[[APIwebmoi.Models.Project, WebManagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "IdProjectNavigation.OwnerIdsNavigation.UserTasks",
+        "Type": "System.Collections.Generic.ICollection\u00601[[APIwebmoi.Models.UserTask, WebManagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "Tasks",
+        "Type": "System.Collections.Generic.ICollection\u00601[[APIwebmoi.Models.Task, WebManagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API.Controllers.ProjectController",
+    "Method": "createPro",
+    "RelativePath": "createPro",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id_project",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "Mota",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Title",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "OwnerIds",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "CreatedAt",
+        "Type": "System.Nullable\u00601[[System.DateTime, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "Columns",
+        "Type": "System.Collections.Generic.ICollection\u00601[[APIwebmoi.Models.Column, WebManagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "OwnerIdsNavigation.IdUser",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "OwnerIdsNavigation.Email",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "OwnerIdsNavigation.Pass",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "OwnerIdsNavigation.Username",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "OwnerIdsNavigation.Avatar",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "OwnerIdsNavigation.IdRole",
+        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "OwnerIdsNavigation.IsActive",
+        "Type": "System.Nullable\u00601[[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "OwnerIdsNavigation.Fullname",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "OwnerIdsNavigation.Comments",
+        "Type": "System.Collections.Generic.ICollection\u00601[[APIwebmoi.Models.Comment, WebManagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "OwnerIdsNavigation.IdRoleNavigation.IdRole",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "OwnerIdsNavigation.IdRoleNavigation.RoleName",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "OwnerIdsNavigation.IdRoleNavigation.NguoiDungs",
+        "Type": "System.Collections.Generic.ICollection\u00601[[APIwebmoi.Models.NguoiDung, WebManagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "OwnerIdsNavigation.Projects",
+        "Type": "System.Collections.Generic.ICollection\u00601[[APIwebmoi.Models.Project, WebManagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "OwnerIdsNavigation.UserTasks",
+        "Type": "System.Collections.Generic.ICollection\u00601[[APIwebmoi.Models.UserTask, WebManagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebManagement.Controllers.TaskController",
+    "Method": "CreateTask",
+    "RelativePath": "createTask",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id_task",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "id_column",
+        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "Title",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Ketqua",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Mota",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "CreatedAt",
+        "Type": "System.Nullable\u00601[[System.DateTime, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "UpdateAt",
+        "Type": "System.Nullable\u00601[[System.DateTime, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "Deadline",
+        "Type": "System.Nullable\u00601[[System.DateTime, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "id",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API.Controllers.ProjectController",
+    "Method": "DeleteColumn",
+    "RelativePath": "deleteColumn/{idColumn}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "idColumn",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API.Controllers.ProjectController",
+    "Method": "DeleteProject",
+    "RelativePath": "deleteProject/{id_project}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id_project",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebManagement.Controllers.TaskController",
+    "Method": "DeleteTask",
+    "RelativePath": "deleteTask/{idTask}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "idTask",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API.Controllers.ProjectController",
+    "Method": "GetColumn",
+    "RelativePath": "GetColumn",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id_project",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[APIwebmoi.Models.Column, WebManagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "API.Controllers.ProjectController",
+    "Method": "GetColumnS",
+    "RelativePath": "GetColumnS",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "idcolumn",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "APIwebmoi.Models.Column",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "API.Controllers.ProjectController",
+    "Method": "getidProjectByidColumn",
+    "RelativePath": "getidProjectByidColumn/{id_column}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id_column",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API.Controllers.ProjectController",
+    "Method": "getmaxIdPro",
+    "RelativePath": "getmaxIdPro",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API.Controllers.ProjectController",
+    "Method": "GetTask",
+    "RelativePath": "GetTask",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "sdt",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[APIwebmoi.Models.Task, WebManagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "API.Controllers.ProjectController",
+    "Method": "GetTenProject",
+    "RelativePath": "GetTenProject",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "sdt",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[APIwebmoi.Models.Project, WebManagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "ApiWebManagement.Controllers.NguoiDungController",
+    "Method": "Index",
+    "RelativePath": "NguoiDung",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ApiWebManagement.Controllers.NguoiDungController",
+    "Method": "Login",
+    "RelativePath": "NguoiDung/Login",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "loginDto",
+        "Type": "ApiWebManagement.DTO.LoginDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ApiWebManagement.Controllers.NguoiDungController",
+    "Method": "Profile",
+    "RelativePath": "NguoiDung/Profile",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "sdt",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ApiWebManagement.Controllers.NguoiDungController",
+    "Method": "Register",
+    "RelativePath": "NguoiDung/Register",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "nguoiDungDTO",
+        "Type": "ApiWebManagement.DTO.NguoiDungDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ApiWebManagement.Controllers.NguoiDungController",
+    "Method": "UpdateAsync",
+    "RelativePath": "NguoiDung/Update/IdUser",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "IdUser",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "nguoiDungDTO",
+        "Type": "ApiWebManagement.DTO.NguoiDungDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "APIwebmoi.Controllers.ThongKeController",
+    "Method": "GetAllTasksByProject",
+    "RelativePath": "tasks-by-project",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "APIwebmoi.Controllers.ThongKeController",
+    "Method": "GetTasksByProject",
+    "RelativePath": "tasks-by-project/{projectId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "projectId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "APIwebmoi.Controllers.ThongKeController",
+    "Method": "GetTasksByProject1",
+    "RelativePath": "tasks/{projectId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "projectId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "APIwebmoi.Controllers.ThongKeController",
+    "Method": "GetTasksWithProgress",
+    "RelativePath": "tasks/progress",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "projectId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API.Controllers.ProjectController",
+    "Method": "updatePro",
+    "RelativePath": "updatePro",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id_project",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "Mota",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Title",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "OwnerIds",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "CreatedAt",
+        "Type": "System.Nullable\u00601[[System.DateTime, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "Columns",
+        "Type": "System.Collections.Generic.ICollection\u00601[[APIwebmoi.Models.Column, WebManagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "OwnerIdsNavigation.IdUser",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "OwnerIdsNavigation.Email",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "OwnerIdsNavigation.Pass",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "OwnerIdsNavigation.Username",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "OwnerIdsNavigation.Avatar",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "OwnerIdsNavigation.IdRole",
+        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "OwnerIdsNavigation.IsActive",
+        "Type": "System.Nullable\u00601[[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "OwnerIdsNavigation.Fullname",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "OwnerIdsNavigation.Comments",
+        "Type": "System.Collections.Generic.ICollection\u00601[[APIwebmoi.Models.Comment, WebManagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "OwnerIdsNavigation.IdRoleNavigation.IdRole",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "OwnerIdsNavigation.IdRoleNavigation.RoleName",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "OwnerIdsNavigation.IdRoleNavigation.NguoiDungs",
+        "Type": "System.Collections.Generic.ICollection\u00601[[APIwebmoi.Models.NguoiDung, WebManagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "OwnerIdsNavigation.Projects",
+        "Type": "System.Collections.Generic.ICollection\u00601[[APIwebmoi.Models.Project, WebManagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "OwnerIdsNavigation.UserTasks",
+        "Type": "System.Collections.Generic.ICollection\u00601[[APIwebmoi.Models.UserTask, WebManagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebManagement.Controllers.TaskController",
+    "Method": "UpdateTask",
+    "RelativePath": "updateTask/{idTask}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "idTask",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "id_task",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "id_column",
+        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "Title",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Ketqua",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Mota",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "CreatedAt",
+        "Type": "System.Nullable\u00601[[System.DateTime, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "UpdateAt",
+        "Type": "System.Nullable\u00601[[System.DateTime, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "Deadline",
+        "Type": "System.Nullable\u00601[[System.DateTime, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "APIwebmoi.Controllers.ThongKeController",
+    "Method": "UpdateTrangThai",
+    "RelativePath": "UpdateTrangThai",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id_task",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "ck",
+        "Type": "System.Boolean",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebManagement.Controllers.WeatherForecastController",
+    "Method": "Get",
+    "RelativePath": "WeatherForecast",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[WebManagement.WeatherForecast, WebManagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ],
+    "EndpointName": "GetWeatherForecast"
+  }
+]
